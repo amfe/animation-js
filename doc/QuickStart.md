@@ -9,7 +9,8 @@ tnpm install animation-js --save
 ## Usage
 
 ```javascript
-import SomeModule from 'animation-js'
+import Animation from 'animation-js'
+import * as cubicbezier from 'amfe-cubicbezier';
 ```
 
 ## Samples
@@ -17,5 +18,14 @@ import SomeModule from 'animation-js'
 Initializing:
 
 ```javascript
-new SomeModule()
+var animation = Animation(
+        1000,                   // duration(ms)
+        cubicbezier.ease,   // timingFunction
+        function(i1, i2) {      // frame
+            console.log(i1, i2);
+        }
+    );
+animation.play().then(function() {
+   console.log('end');
+});
 ```
